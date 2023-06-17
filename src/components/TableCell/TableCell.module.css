@@ -1,0 +1,21 @@
+.container {
+    border: 2px solid black;
+    margin-bottom: 5px;
+    display: flex;
+    width: 800px;
+    font-size: larger;
+}
+.todoId {
+    width: 10%;
+    text-align: center;
+    border-right: 1px solid black;
+}
+.todoTitle {
+    width: 60%;
+    text-align: center;
+    border-right: 1px solid black;
+}
+.todoCompleted {
+    width: 20%;
+    text-align: center;
+}
