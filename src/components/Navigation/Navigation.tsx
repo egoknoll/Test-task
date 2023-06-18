@@ -11,28 +11,21 @@ interface INavigation {
 }
 
 const Navigation = ({ 
-    searchValue,
-    changeSearchValue, 
-    changeCurrentPage, 
-    changeFilterByCompletedValue,
-    changeSortValue,
-    changeOrderValue 
-    }:INavigation) => {
+        searchValue,
+        changeSearchValue, 
+        changeCurrentPage, 
+        changeFilterByCompletedValue,
+        changeSortValue,
+        changeOrderValue 
+    }: INavigation) => {
 
     const handleSearch = (e: ChangeEvent<HTMLInputElement> ) => {
         changeSearchValue(e.target.value)
         changeCurrentPage(1)
     }
-    const handleCompletedChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        changeFilterByCompletedValue(e.target.value)
-        changeCurrentPage(1)
-    }
-    const handleSortChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        changeSortValue(e.target.value)
-        changeCurrentPage(1)
-    }
-    const handleOrderChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        changeOrderValue(e.target.value)
+
+    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>, changeFunction: (arg: string) => void) => {
+        changeFunction(e.target.value)
         changeCurrentPage(1)
     }
 
@@ -57,7 +50,7 @@ const Navigation = ({
                     <select 
                         className="form-select form-select mb-3" 
                         aria-label=".form-select-lg example"
-                        onChange={(e) => handleCompletedChange(e)}
+                        onChange={(e) => handleSelectChange(e, changeFilterByCompletedValue)}
                     >
                         <option value='' defaultValue=''>Completed?</option>
                         <option value="true">True</option>
@@ -70,7 +63,7 @@ const Navigation = ({
                     <select 
                     className="form-select form-select mb-3" 
                     aria-label=".form-select-lg example"
-                    onChange={(e) => handleSortChange(e)}
+                    onChange={(e) => handleSelectChange(e, changeSortValue)}
                     >
                         <option value='' defaultValue=''>Sort by</option>
                         <option value="id">Id</option>
@@ -81,7 +74,7 @@ const Navigation = ({
                     <select 
                     className="form-select form-select mb-3" 
                     aria-label=".form-select-lg example"
-                    onChange={(e) => handleOrderChange(e)}
+                    onChange={(e) => handleSelectChange(e, changeOrderValue)}
                     >
                         <option value='' defaultValue={''}>Order</option>
                         <option value="asc">Ascending</option>
