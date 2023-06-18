@@ -3,7 +3,6 @@ import CustomSelect from "../CustomSelect/CustomSelect";
 
 interface INavigation {
     searchValue: string
-    filteByCompletedValue: string
     changeSearchValue: (arg: string) => void
     changeCurrentPage: (arg: number) => void
     changeFilterByCompletedValue: (arg: string) => void
@@ -29,12 +28,12 @@ const Navigation = ({
         <div className="container-m text-center">
             <div className="row">
                 <div className="col">
+                    <div className="mb-2">Search</div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1">Title</span>
                         <input 
                             type="text" 
                             className="form-control" 
-                            placeholder="Search" 
                             aria-label="Username" 
                             aria-describedby="basic-addon1"
                             value={searchValue} 
@@ -44,8 +43,8 @@ const Navigation = ({
                 </div>
                 <CustomSelect
                     title="Completed?"
-                    values={['true', 'false']}
-                    contents={['True', 'False']}
+                    values={['' ,'true', 'false']}
+                    contents={['None' ,'True', 'False']}
                     changeCurrentPage={changeCurrentPage}
                     changeFunction={changeFilterByCompletedValue}
                 />
@@ -53,15 +52,15 @@ const Navigation = ({
             <div className="row">
                 <CustomSelect
                     title="Sort by"
-                    values={['id', 'title']}
-                    contents={['Id', 'Title']}
+                    values={['' ,'id', 'title']}
+                    contents={['None' ,'Id', 'Title']}
                     changeCurrentPage={changeCurrentPage}
                     changeFunction={changeSortValue}
                 />
                 <CustomSelect
                     title="Order"
-                    values={['asc', 'desc']}
-                    contents={['Ascending', 'Descending']}
+                    values={['' ,'asc', 'desc']}
+                    contents={['None' ,'Ascending', 'Descending']}
                     changeCurrentPage={changeCurrentPage}
                     changeFunction={changeOrderValue}
                 />

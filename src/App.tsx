@@ -43,7 +43,6 @@ function App() {
           <div className="container">
             <Navigation
               searchValue={searchValue}
-              filteByCompletedValue={filteByCompletedValue}
               changeSearchValue={changeSearchValue}
               changeCurrentPage={changeCurrentPage}
               changeSortValue={changeSortValue}

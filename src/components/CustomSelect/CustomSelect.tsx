@@ -18,12 +18,12 @@ const CustomSelect = ({ title, contents, values, changeCurrentPage, changeFuncti
 
     return (
         <div className="col">
+            <div className="mb-2">{title}</div>
         <select 
             className="form-select form-select mb-3" 
             aria-label=".form-select-lg example"
             onChange={(e) => handleSelectChange(e)}
         >
-            <option value='' defaultValue='' key={2}>{title}</option>
             {contents.map((el, index) => <option key={index} value={values[index]}>{el}</option>)} 
         </select>
     </div>
