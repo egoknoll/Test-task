@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import CustomSelect from "../CustomSelect/CustomSelect";
 
 interface INavigation {
     searchValue: string
@@ -24,11 +25,6 @@ const Navigation = ({
         changeCurrentPage(1)
     }
 
-    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>, changeFunction: (arg: string) => void) => {
-        changeFunction(e.target.value)
-        changeCurrentPage(1)
-    }
-
     return (
         <div className="container-m text-center">
             <div className="row">
@@ -46,41 +42,29 @@ const Navigation = ({
                         />
                     </div>
                 </div>
-                <div className="col">
-                    <select 
-                        className="form-select form-select mb-3" 
-                        aria-label=".form-select-lg example"
-                        onChange={(e) => handleSelectChange(e, changeFilterByCompletedValue)}
-                    >
-                        <option value='' defaultValue=''>Completed?</option>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                </div>
+                <CustomSelect
+                    title="Completed?"
+                    values={['true', 'false']}
+                    contents={['True', 'False']}
+                    changeCurrentPage={changeCurrentPage}
+                    changeFunction={changeFilterByCompletedValue}
+                />
             </div>
             <div className="row">
-                <div className="col">
-                    <select 
-                    className="form-select form-select mb-3" 
-                    aria-label=".form-select-lg example"
-                    onChange={(e) => handleSelectChange(e, changeSortValue)}
-                    >
-                        <option value='' defaultValue=''>Sort by</option>
-                        <option value="id">Id</option>
-                        <option value="title">Title</option>
-                    </select>
-                </div>
-                <div className="col">
-                    <select 
-                    className="form-select form-select mb-3" 
-                    aria-label=".form-select-lg example"
-                    onChange={(e) => handleSelectChange(e, changeOrderValue)}
-                    >
-                        <option value='' defaultValue={''}>Order</option>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </div>
+                <CustomSelect
+                    title="Sort by"
+                    values={['id', 'title']}
+                    contents={['Id', 'Title']}
+                    changeCurrentPage={changeCurrentPage}
+                    changeFunction={changeSortValue}
+                />
+                <CustomSelect
+                    title="Order"
+                    values={['asc', 'desc']}
+                    contents={['Ascending', 'Descending']}
+                    changeCurrentPage={changeCurrentPage}
+                    changeFunction={changeOrderValue}
+                />
             </div>
         </div>
     )
