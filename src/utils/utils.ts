@@ -2,7 +2,7 @@
 import { ITodo } from "../App"
 
 
-export const getCompleted = (arg: boolean | string) => {
+export const getCompletedValue = (arg: boolean | string) => {
     if(arg === true) {
         return 'true'
     } else if (arg === false) {
